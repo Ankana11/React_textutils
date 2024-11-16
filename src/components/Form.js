@@ -30,27 +30,27 @@ export default function Form(props) {
      
     };
   
-    const [text, setText] = useState('Enter Your Text Here')
+    const [text, setText] = useState('')
   return (
     <>
-    <div className="container">
+    <div className="container" style={{ color: props.mode==='light'?'black':'white' }}>
        <h2>{props.heading}</h2>
       <div className="form-group">
-    <textarea className="form-control" value={text} onChange={handleOnChange} id="myform" rows="8"></textarea>
-    <button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleUpClick}>Click for Uppercase</button>
-<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleLowClick}>Click for Lowercase</button>
-<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleSpace}>Click for Remove Extra Space</button>
-<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleCopyText}>Click for Copy</button>
-<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleclear}>Click for Cleartext</button>
+    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode==='light'?'white':'#34365d', color: props.mode==='light'?'black':'white'  }} id="myform" rows="8"></textarea>
+    <button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
+<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
+<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleSpace}>Remove Extra Space</button>
+<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleCopyText}>Copy Text To Clipbord</button>
+<button className="btn btn-sm btn-primary my-2 mx-2" onClick={handleclear}>Cleartext</button>
     </div>
     </div>
     
-    <div className="container">
+    <div className="container" style={{ color: props.mode==='light'?'black':'white' }}>
 <h2>Your Summary</h2>
 <p><b>{text.split(" ").length}</b> words and <b>{text.length}</b> character</p>
 <p>You Took {0.008 * text.split(" ").length} Minutes To Read</p>
 <h3>Preview</h3>
-<p>{text}</p>
+<p>{text.length>0? text : "Enter Your Text Above To See Preview"}</p>
     </div>
     </>
   )
